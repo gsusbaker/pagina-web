@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>59FIFTY Fitted Azul — Tienda de Gorras</title>
+<style>
+  :root{--brand:#ff7a00;--border:#e5e7eb;--text:#0b1220;--radius:14px;--header-bg:#2e2e2e;}
+  body{margin:0;font-family:system-ui,sans-serif;color:var(--text);background:#fff;}
+  header{background:var(--header-bg);color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+  header img{height:100px;cursor:pointer;}
+  main{max-width:1100px;margin:30px auto;padding:0 16px;}
+  .product{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start;}
+  .media{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+  .media img{width:100%;height:420px;object-fit:cover;display:block;}
+  .info h1{margin:0 0 8px;}
+  .price{color:green;font-weight:800;font-size:1.2rem;margin:6px 0 14px;display:inline-block;}
+  .buy{border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:700;}
+  .buy:hover{background:#f3f4f6;}
+  .back{display:inline-block;margin:14px 0 0;color:var(--brand);text-decoration:none;font-weight:700;}
+  .related{margin-top:30px;padding-top:16px;border-top:1px solid var(--border);}
+  .related a{display:inline-block;margin-right:12px;text-decoration:none;color:#111;border:1px solid var(--border);padding:6px 10px;border-radius:10px;}
+  @media(max-width:900px){.product{grid-template-columns:1fr;}}
+  
+  /* --- Selector de tallas --- */
+  .sizes {margin:20px 0;font-size:0.95rem;}
+  .sizes strong {font-weight:700;}
+  .sizes .stock {color:#999;margin-left:6px;}
+  .size-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(60px,1fr));
+    gap:6px;
+    margin-top:10px;
+    max-width:380px;
+  }
+  .size {
+    border:1px solid #ccc;
+    border-radius:6px;
+    text-align:center;
+    padding:8px 0;
+    cursor:pointer;
+    background:#f9f9f9;
+    transition:all 0.2s ease;
+    user-select:none;
+  }
+  .size:hover {background:#ff7a00;color:white;}
+  .size.active {background:#111;color:white;border-color:#111;}
+</style>
+</head>
+
+<body>
+<header>
+  <a href="/pagina-web/index.html"><img src="/pagina-web/images/ChatGPT Image 24 sept 2025, 19_55_36.png"
+ alt="Logo"/></a>
+  <a href="/pagina-web/index.html" style="color:#ff7a00;text-decoration:none;font-weight:700">← Dale a la naranjita de Jesus</a>
+</header>
+
+<main>
+  <section class="product">
+    <div class="media">
+      <img src="/pagina-web/images/70360639_c0ae4c69-7c88-47f5-b500-bbbccc7e9318.webp" alt="59FIFTY Fitted Azul">
+    </div>
+
+    <div class="info">
+  <h1>59FIFTY Fitted Navy</h1>
+   <div class="price">19,50 €</div>
+   <p>Versátil y sobria en tono Navy. Ideal para combinar con outfits casual.</p>      <p class="small">Material: algodón · Talla: ajustable</p>
+      <button class="buy">Añadir al carrito</button>
+      <div><a class="back" href="catalogo.html">← Seguir comprando</a></div>
+
+      <!-- Selector de tallas -->
+      <div class="sizes">
+        <strong>Talla:</strong>
+        <span class="stock">/ Bajas existencias</span>
+        <div class="size-grid">
+          <div class="size active">6 7/8</div>
+          <div class="size">7</div>
+          <div class="size">7 1/8</div>
+          <div class="size">7 1/4</div>
+          <div class="size">7 3/8</div>
+          <div class="size">7 1/2</div>
+          <div class="size">7 5/8</div>
+          <div class="size">7 3/4</div>
+          <div class="size">7 7/8</div>
+          <div class="size">8</div>
+        </div>
+      </div>
+
+      <!-- Recomendaciones -->
+      <div class="related">
+        <strong>También te puede interesar:</strong><br/>
+        <a href="gorra2.html">59FIFTY Los Angeles RED</a>
+        <a href="gorra3.html">OFFSIDE Chain Oakland</a>
+        <a href="gorra1.html">Gorra Denim Yankees</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+</body>
+</html>

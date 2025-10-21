@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tienda de Gorras — Inicio</title>
+    <!--
+ 
+  -->
+    <style>
+        :root {
+            --bg: #ffffff;
+            /* fondo página */
+            --text: #0b1220;
+            /* texto general oscuro */
+            --muted: #6b7280;
+            /* gris medio */
+            --brand: #ff7a00;
+            /* naranja (puedes cambiar) */
+            --max: 1100px;
+            /* ancho máximo del contenido */
+            --radius: 14px;
+            /* radios suaves */
+            --black: #2e2e2e;
+            /* header negro */
+            --border: #e5e7eb;
+            /* borde suave para tarjetas */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .container {
+            width: min(100%, var(--max));
+            margin-inline: auto;
+            padding: 0 16px;
+        }
+
+        /* HEADER NEGRO */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--black);
+            color: #ffffff;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .topbar {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0 6px;
+        }
+
+        /* Franja tipo código de barras */
+        .barcode-wrap {
+            display: grid;
+            gap: 6px;
+        }
+
+        .barcode {
+            height: 20px;
+            background: repeating-linear-gradient(90deg, #ffffff 0 2px, transparent 2px 4px);
+            opacity: .85;
+            border-radius: 3px;
+        }
+
+        .barcode-text {
+            color: #d1d5db;
+            font-size: 12px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .right-side {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            padding: 4px 8px;
+        }
+
+        .search input {
+            border: none;
+            outline: none;
+            background: transparent;
+            color: #111;
+            width: 180px;
+        }
+
+        /* Hueco para la naranja (pon tu imagen en el src del <img>) */
+        .naranja {
+            width: 80px;
+            object-fit: contain;
+
+        }
+
+        /* NAV */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            padding: 10px 0 16px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            text-decoration: underline;
+            outline: none;
+        }
+
+        /* HAMBURGER en móvil */
+        .menu-btn {
+            display: none;
+            border: 1px solid #374151;
+            background: transparent;
+            color: #fff;
+            border-radius: 8px;
+            padding: 6px 10px;
+        }
+
+        @media (max-width: 760px) {
+            .nav {
+                justify-content: space-between;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                left: 16px;
+                right: 16px;
+                top: 116px;
+                flex-direction: column;
+                background: #111;
+                border: 1px solid #374151;
+                border-radius: 12px;
+                padding: 10px;
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: inline-flex;
+            }
+        }
+
+        /* Texto de bienvenida */
+        .welcome {
+            background: #fff;
+            color: var(--text);
+        }
+
+        .welcome .inner {
+            padding: 16px 0 8px;
+        }
+
+        .welcome h1 {
+            margin: 0 0 6px;
+            font-size: clamp(20px, 2.6vw, 28px);
+        }
+
+        .welcome p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        /* CARRUSEL */
+        .hero {
+            padding: 16px 0 28px;
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: #f9fafb;
+            height: 320px;
+        }
+
+        .track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+        .slide .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45));
+        }
+
+        .caption {
+            position: absolute;
+            left: 18px;
+            bottom: 18px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: rgba(17, 17, 17, 0.65);
+            color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(4px);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .ctrl {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6px;
+            pointer-events: none;
+        }
+
+        .btn {
+            pointer-events: auto;
+            border: 1px solid #d1d5db;
+            background: #ffffff;
+            color: #111827;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+        }
+
+        .btn:hover {
+            background: #f3f4f6;
+        }
+
+        .dots {
+            position: absolute;
+            left: 50%;
+            bottom: 10px;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #d1d5db;
+            border: 1px solid #9ca3af;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--brand);
+            border-color: var(--brand);
+        }
+
+        /* NOVEDADES + VIDEO */
+        main {
+            padding: 12px 0 50px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 18px 0 12px;
+        }
+
+        .section-title .pill {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: var(--brand);
+            box-shadow: 0 0 0 4px rgba(255, 122, 0, 0.18);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 980px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card .info {
+            padding: 12px;
+            display: grid;
+            gap: 6px;
+        }
+
+        .price {
+            font-weight: 700;
+        }
+
+        .small {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .buy {
+            border: 1px solid #d1d5db;
+            background: #fff;
+            color: var(--text);
+            border-radius: 10px;
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+
+        .buy:hover {
+            background: #f9fafb;
+        }
+
+        .split {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .split {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 12px;
+        }
+
+        .panel video {
+            width: 100%;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            background: #fafafa;
+            color: var(--text);
+            padding: 20px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 760px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* Utilidades */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+          #cart-icon:hover {
+      background: var(--brand);
+      transform: scale(1.05);
+    }
+    
+    #cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #111;
+      color: #fff;
+      border-radius: 50px;
+      padding: 10px 14px;
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(0,0,0,.3);
+      transition: background 0.2s, transform 0.2s;
+      z-index: 9999;
+    }
+    </style>
+    <a id="cart-icon" href="/pagina-web/carrito.html" title="Ver carrito">
+    🛒 <span id="cart-count">0</span>
+  </a>
+</head>
+
+<body>
+    <!-- HEADER NEGRO -->
+    <header>
+        <div class="container topbar">
+            <div class="barcode-wrap">
+                <div class="barcode" aria-hidden="true"></div>
+                <div class="barcode-text">Encuentra tu GORRA para cada ESTILO</div>
+            </div>
+            <div class="right-side">
+                <div class="search" role="search">
+                    <span aria-hidden="true">🔍</span>
+                    <input type="search" placeholder="Buscar..." aria-label="Buscar" />
+                </div>
+                <!-- Pon aquí tu imagen de la naranja -->
+                <img class="naranja" src="./images/ChatGPT Image 24 sept 2025, 19_55_36.png"
+                    alt="Mascota naranja (pon tu imagen)" width="300px" />
+            </div>
+        </div>
+        <div class="container nav">
+            <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">☰ Menú</button>
+            <nav aria-label="Principal">
+                <ul id="menu">
+                    <li><a href="#">INICIO</a></li>
+<li><a href="catalogo.html">CATÁLOGO</a></li>
+                    <li><a href="#contacto">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- TEXTO DE BIENVENIDA -->
+    <section class="welcome">
+        <div class="container inner">
+            <h1>Bienvenido a la tienda de gorras</h1>
+            <p>Encuentra el modelo que encaja con tu estilo. Envíos 24/48h y devoluciones sencillas.</p>
+        </div>
+    </section>
+
+    <!-- HERO / CARRUSEL -->
+    <section class="hero">
+        <div class="container">
+            <div class="carousel" id="carousel" aria-roledescription="carrusel" aria-label="Promociones">
+                <div class="track" id="track">
+                    <!-- Diapositivas de ejemplo: cambia las imágenes por las tuyas -->
+                    <div class="slide">
+                        <img src="images/latiendadelasgorras-33_33a04d48-3cfd-4f75-8f87-f26d16079489_3648x4864.webp"
+                            alt="Gorra negra sobre fondo claro" />
+                        <div class="overlay"></div>
+                        <div class="caption">Colección Negra · -20%</div>
+                    </div>
+                    <div class="slide">
+                        <video autoplay muted loop playsinline>
+                            <source src="images/videoplayback.mp4" type="video/mp4" />
+                            
+                        </video>
+                        <div class="overlay"></div>
+                        <div class="caption">Nuestra colección en acción </div>
+                    </div>
+
+                    <div class="slide">
+                        <img src="images/new_era_oracle_red_bull_racing_binary-1048x630.jpg"
+                            alt="Gorra roja en primer plano" />
+                        <div class="overlay"></div>
+                        <div class="caption">Edición Limitada</div>
+                    </div>
+                </div>
+                <div class="ctrl">
+                    <button class="btn" id="prev" aria-label="Anterior">‹</button>
+                    <button class="btn" id="next" aria-label="Siguiente">›</button>
+                </div>
+                <div class="dots" id="dots" aria-hidden="true"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVEDADES + VIDEO -->
+    <main class="container">
+        <div class="section-title" id="novedades">
+            <span class="pill"></span>
+            <h2 style="margin:0;">Novedades</h2>
+        </div>
+
+        <div class="grid" id="gridNovedades">
+            <!-- Tarjetas de ejemplo (sustituye por tus datos) -->
+            <article class="card">
+<a href="gorras/gorra1.html"><img src="/pagina-web/images/latiendadelasgorras-33_33a04d48-3cfd-4f75-8f87-f26d16079489_3648x4864.webp" alt="Gorra blanca"></a>
+                    
+                <div class="info">
+                    <strong>59Fifty New York Black</strong>
+                    <span class="small">Ajustable · Algodón</span>
+                    <span class="price">19,99 €</span>
+                    <button class="buy" data-id="1">Añadir al carrito</button>
+                </div>
+            </article>
+            <article class="card">
+                <a href="gorras/gorra3.html"><img src="images/gorra-87_08f01e5a-8f37-432b-9543-829ed4898dc8_3648x4864.webp" alt="Gorra gris" /> </a>
+                <div class="info">
+                    <strong>59FIFTY Los Angeles RED</strong>
+                    <span class="small">Unisex · Casual</span>
+                    <span class="price">49,99 €</span>
+                    <button class="buy" data-id="2">Añadir al carrito</button>
+                </div>
+            </article>
+            <article class="card">
+                <a href="gorras/gorra2.html"><img src="images/pri-1_3555x4740.webp" alt="Gorra roja" /></a>
+                <div class="info">
+                    <strong>OFFSIDE Chain Oakland Green</strong>
+                    <span class="small">Street · Talla única</span>
+                    <span class="price">17,50 €</span>
+                    <button class="buy" data-id="3">Añadir al carrito</button>
+                </div>
+            </article>
+            <article class="card">
+                <a href="gorras/gorra4.html"><img src="/pagina-web/images/latiendadelasgorrasabril-1_f5fa8ec7-bcd0-4590-a2a5-916c51e93863_3648x4864.webp "alt="Gorra roja" /></a>
+              
+                <div class="info">
+                    <strong>Goffer Denim Yankees</strong>
+                    <span class="small">Ligera · Verano</span>
+                    <span class="price">16,90 €</span>
+                    <button class="buy" data-id="4">Añadir al carrito</button>
+                </div>
+            </article>
+        </div>
+
+        <div class="section-title" id="video" style="margin-top:28px;">
+            <span class="pill"></span>
+            <h2 style="margin:0;">Vídeo</h2>
+        </div>
+
+        <div class="split">
+            <div class="panel">
+                <h3 style="margin:4px 0 10px;">Presentación New Era</h3>
+                <video controls src="images/videoplayback (1).mp4" poster="https://www.youtube.com/watch?v=xUijOJg900U">
+
+                </video>
+            </div>
+            <div class="panel">
+                <h3 style="margin:4px 0 10px;">¿Qué traemos de nuevo?</h3>
+                <p class="small">Colecciones inspiradas en deporte y cultura urbana. Materiales de calidad, envíos
+                    24/48h y devoluciones sencillas.</p>
+                <ul>
+                    <li>Nuevos modelos cada semana</li>
+                    <li>Descuentos para estudiantes</li>
+                    <li>Ediciones limitadas</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <div class="container footer-grid">
+            <div>
+                <strong>Tienda de Gorras</strong>
+                <p class="small">La mejor selección de gorras para tu estilo.</p>
+            </div>
+            <div>
+                <strong>Enlaces</strong>
+                <ul style="list-style:none; padding:0; margin:8px 0 0; display:grid; gap:6px;">
+                    <li><a href="#" style="color:inherit">Inicio</a></li>
+                    <li><a href="#novedades" style="color:inherit">Novedades</a></li>
+                    <li><a href="#video" style="color:inherit">Vídeo</a></li>
+                    <li><a href="#" style="color:inherit">Política de privacidad</a></li>
+                </ul>
+            </div>
+            <div>
+                <strong>Correo</strong>
+                <form id="formNewsletter" style="margin-top:8px; display:flex; gap:8px;">
+                    <label for="email" class="sr-only">Email</label>
+                    <input id="email" type="email" placeholder="tu@email.com" required
+                        style="flex:1; padding:8px 10px; border-radius:10px; border:1px solid var(--border); background:#fff; color:var(--text)" />
+                    <button class="buy" type="submit">Suscribir</button>
+                </form>
+                <p id="msg" class="small" aria-live="polite" style="margin:6px 0 0;"></p>
+            </div>
+        </div>
+        <div class="container copyright">© <span id="year"></span> Tienda de Gorras — Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // ======= NAV móvil
+        const menuBtn = document.getElementById('menuBtn');
+        const menu = document.getElementById('menu');
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                const open = menu.classList.toggle('open');
+                menuBtn.setAttribute('aria-expanded', String(open));
+            });
+        }
+
+        // ======= CARRUSEL básico sin librerías
+        const track = document.getElementById('track');
+        const slides = Array.from(track.children);
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const dots = document.getElementById('dots');
+        let index = 0;
+
+        function renderDots() {
+            dots.innerHTML = '';
+            slides.forEach((_, i) => {
+                const d = document.createElement('button');
+                d.className = 'dot' + (i === index ? ' active' : '');
+                d.addEventListener('click', () => goTo(i));
+                dots.appendChild(d);
+            });
+        }
+
+        function goTo(i) {
+            index = (i + slides.length) % slides.length; // rotación circular
+            track.style.transform = `translateX(-${index * 100}%)`;
+            renderDots();
+        }
+        prevBtn.addEventListener('click', () => goTo(index - 1));
+        nextBtn.addEventListener('click', () => goTo(index + 1));
+
+        // auto-play (pausa si el usuario interactúa con los controles)
+        let timer = setInterval(() => goTo(index + 1), 4500);
+        [prevBtn, nextBtn, track].forEach(el => el.addEventListener('pointerdown', () => { clearInterval(timer); }));
+
+        renderDots();
+
+        // ======= Newsletter (demo simple)
+        const form = document.getElementById('formNewsletter');
+        const msg = document.getElementById('msg');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            if (!email) return;
+            msg.textContent = '¡Gracias! Te hemos suscrito.';
+            form.reset();
+        });
+
+        // ======= Año dinámico en footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

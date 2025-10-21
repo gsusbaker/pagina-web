@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito — Tienda de Gorras</title>
+  <style>
+    :root { --border:#e5e7eb; --text:#0b1220; --brand:#ff7a00; }
+    body { margin:0; font-family:system-ui,sans-serif; color:var(--text); background:#fff; }
+    header { background:#2e2e2e; color:#fff; padding:12px 20px; display:flex; justify-content:space-between; align-items:center; }
+    header img { height:70px; cursor:pointer; }
+    main { max-width:1000px; margin:28px auto; padding:0 16px; }
+    h1 { margin:0 0 18px; text-align:center; }
+    .cart { border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+    .row { display:grid; grid-template-columns: 80px 1fr 120px 140px 40px; align-items:center; gap:12px; padding:12px; border-bottom:1px solid var(--border); }
+    .row.header { background:#f9fafb; font-weight:700; }
+    .row img { width:70px; height:70px; object-fit:cover; border-radius:8px; }
+    .qty { display:inline-flex; align-items:center; gap:8px; }
+    .qty button { width:28px; height:28px; border:1px solid var(--border); background:#fff; cursor:pointer; border-radius:8px; }
+    .del { background:none; border:1px solid var(--border); border-radius:8px; width:32px; height:32px; cursor:pointer; }
+    .total { display:flex; justify-content:flex-end; gap:16px; align-items:center; padding:14px; }
+    .pill { background:#111; color:#fff; padding:8px 12px; border-radius:10px; font-weight:700; }
+    .actions { display:flex; gap:10px; }
+    .btn { border:1px solid var(--border); background:#fff; padding:8px 12px; border-radius:10px; cursor:pointer; }
+    .btn.primary { background:#111; color:#fff; border-color:#111; }
+    @media (max-width:700px){
+      .row { grid-template-columns: 60px 1fr 100px 120px 40px; }
+      .row.header { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" title="Volver al inicio">
+      <img src="images/ChatGPT Image 24 sept 2025, 19_24_02.png" alt="Logo" />
+    </a>
+    <a href="catalogo.html" style="color:#ff7a00; text-decoration:none; font-weight:700;">← Seguir comprando</a>
+  </header>
+
+  <main>
+    <h1>Tu carrito</h1>
+    <div id="cart" class="cart"></div>
+    <div class="total">
+      <div class="pill">Total: <span id="grand">0,00 €</span></div>
+      <div class="actions">
+        <button id="clear" class="btn">Vaciar</button>
+        <button class="btn primary">Pagar</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="carrito.js"></script>
+</body>
+</html>

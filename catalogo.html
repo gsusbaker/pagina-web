@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda de Gorras — Catálogo</title>
+  <style>
+    :root {
+      --brand: #ff7a00;
+      --border: #e5e7eb;
+      --text: #0b1220;
+      --muted: #6b7280;
+      --radius: 14px;
+      --header-bg: #2e2e2e; /* gris medio */
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #fff;
+      color: var(--text);
+    }
+
+    header {
+      background: var(--header-bg);
+      color: white;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    header a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    header img {
+      height: 140px;
+      width: auto;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    /* 📦 Cuadrícula de 2 en 2 */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 24px;
+      justify-items: center;
+    }
+
+    .card {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: white;
+      transition: transform 0.2s ease;
+      max-width: 500px;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px; /* más grande para que se vea mejor */
+      object-fit: cover;
+      display: block;
+    }
+
+    .info {
+      padding: 12px;
+    }
+
+    .info strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+    }
+
+    .price {
+      color: green; /* verde */
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .buy {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .buy:hover {
+      background: #f3f4f6;
+    }
+
+    #cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #111;
+      color: #fff;
+      border-radius: 50px;
+      padding: 10px 14px;
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(0,0,0,.3);
+      transition: background 0.2s, transform 0.2s;
+      z-index: 9999;
+    }
+    #cart-icon:hover {
+      background: var(--brand);
+      transform: scale(1.05);
+    }
+    #cart-count {
+      background: var(--brand);
+      color: white;
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 14px;
+      margin-left: 4px;
+    }
+
+    #cart-bubble{ display:none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="./index.html" title="Volver al inicio">
+      <img src="images/ChatGPT Image 24 sept 2025, 19_24_02.png" alt="Logo Tienda de Gorras" />
+    </a> 
+    <h1>Nuestro Catalogo</h1>
+  </header>
+
+  <!-- 🛒 Icono fijo del carrito -->
+  <a id="cart-icon" href="/pagina-web/carrito.html" title="Ver carrito">
+    🛒 <span id="cart-count">0</span>
+  </a>
+
+  <main>
+    <div class="grid">
+      <div class="card">
+<a href="gorras/gorra1.html"><img src="/pagina-web/images/latiendadelasgorras-33_33a04d48-3cfd-4f75-8f87-f26d16079489_3648x4864.webp" alt="Gorra blanca"></a>
+        <div class="info">
+          <strong>Gorra Denim Yankees</strong>
+          <span class="price">16,90 €</span><br>
+          <button class="buy">Añadir al carrito</button>
+        </div>
+      </div>
+
+      <div class="card">
+<a href="gorras/gorra3.html"><img src="images/pri-1_3555x4740.webp" alt="Gorra gris" /> </a>        <div class="info">
+          <strong>59FIFTY Los Angeles RED</strong>
+          <span class="price">17,50 €</span><br>
+          <button class="buy">Añadir al carrito</button>
+        </div>
+      </div>
+
+      <div class="card">
+<a href="gorras/gorra3.html"><img src="images/gorra-87_08f01e5a-8f37-432b-9543-829ed4898dc8_3648x4864.webp" alt="Gorra gris" /> </a>        <div class="info">
+          <strong>OFFSIDE Chain Oakland</strong>
+          <span class="price">49,99 €</span><br>
+          <button class="buy">Añadir al carrito</button>
+        </div>
+      </div>
+
+      <div class="card">
+<a href="gorras/gorra4.html"><img src="images/latiendadelasgorrasabril-1_f5fa8ec7-bcd0-4590-a2a5-916c51e93863_3648x4864.webp" alt="Gorra blanca"></a>
+        <div class="info">
+          <strong>New Era Hallowen 2025</strong>
+          <span class="price">19.99 €</span><br>
+          <button class="buy">Añadir al carrito</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <a href="gorras/gorra5.html"><img src="images/70360647_4b733b02-dffd-43a1-901f-01d89a36e74d.webp" alt="Gorra azul" /></a>
+        <div class="info">
+          <strong>59FIFTY Fitted Azul</strong>
+          <span class="price">22,90 €</span><br>
+          <button class="buy">Añadir al carrito</button>
+        </div>
+      </div>
+
+      <div class="card">
+          <a href="gorras/gorra6.html"><img src="images/70360639_c0ae4c69-7c88-47f5-b500-bbbccc7e9318.webp" alt="Gorra verde" /></a>
+        <div class="info">
+          <strong>59FIFTY Fitted Navy</strong>
+          <span class="price">19,50 €</span><br>
+          <button class="buy">Añadir al carrito</button>
+        </div>
+      </div>
+
+      <div class="card">
+         <a href="gorras/gorra7.html"><img src="images/60758372_1.webp" alt="Gorra beige" /></a>
+        <div class="info">
+          <strong>Gorro New York Yankees</strong>
+          <span class="price">29,99 €</span><br>
+          <button class="buy">Añadir al carrito</button>
+        </div>
+      </div>
+
+      <div class="card">
+         <a href="gorras/gorra8.html"><img src="images/60758379_1.webp" alt="Gorra negra" /></a>
+        <div class="info">
+          <strong>Gorro Kansas City </strong>
+          <span class="price">29,90 €</span><br>
+          <button class="buy">Añadir al carrito</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Tu lógica del catálogo (animación + carrito) -->
+  <script src="catalogo.js"></script>
+</body>
+</html>
