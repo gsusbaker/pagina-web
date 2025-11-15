@@ -5,9 +5,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tienda de Gorras — Inicio</title>
-    <!--
- 
-  -->
     <style>
         :root {
             --bg: #ffffff;
@@ -241,12 +238,13 @@
             object-fit: cover;
             display: block;
         }
+        
         .slide video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
         .slide .overlay {
             position: absolute;
@@ -429,6 +427,15 @@
             border-radius: 10px;
             outline: none;
         }
+        
+        /* Oculta los controles por defecto del audio de fondo, pero lo deja en el flujo del documento */
+        .background-audio-controls {
+            margin-top: 10px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 8px;
+            background: #f9fafb;
+        }
 
         /* FOOTER */
         footer {
@@ -468,37 +475,34 @@
             clip: rect(0, 0, 0, 0);
             border: 0;
         }
-          #cart-icon:hover {
-      background: var(--brand);
-      transform: scale(1.05);
-    }
-    
-    #cart-icon {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #111;
-      color: #fff;
-      border-radius: 50px;
-      padding: 10px 14px;
-      font-size: 20px;
-      text-decoration: none;
-      font-weight: 700;
-      box-shadow: 0 4px 10px rgba(0,0,0,.3);
-      transition: background 0.2s, transform 0.2s;
-      z-index: 9999;
-    }
-    
 
-    
+        #cart-icon:hover {
+            background: var(--brand);
+            transform: scale(1.05);
+        }
+
+        #cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #111;
+            color: #fff;
+            border-radius: 50px;
+            padding: 10px 14px;
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .3);
+            transition: background 0.2s, transform 0.2s;
+            z-index: 9999;
+        }
     </style>
-    <a id="cart-icon" href="/pagina-web/carrito.html" title="Ver carrito">
-    🛒 <span id="cart-count">0</span>
-  </a>
+    <a id="cart-icon" href="./carrito.html" title="Ver carrito">
+        🛒 <span id="cart-count">0</span>
+    </a>
 </head>
 
 <body>
-    <!-- HEADER NEGRO -->
     <header>
         <div class="container topbar">
             <div class="barcode-wrap">
@@ -510,9 +514,7 @@
                     <span aria-hidden="true">🔍</span>
                     <input type="search" placeholder="Buscar..." aria-label="Buscar" />
                 </div>
-                <!-- Pon aquí tu imagen de la naranja -->
-                <img class="naranja" src="./images/favicon.ico"
-                    alt="Mascota naranja (pon tu imagen)" width="300px" />
+                <img class="naranja" src="./images/favicon.ico" alt="Mascota naranja (pon tu imagen)" width="300px" />
             </div>
         </div>
         <div class="container nav">
@@ -520,14 +522,13 @@
             <nav aria-label="Principal">
                 <ul id="menu">
                     <li><a href="#">INICIO</a></li>
-<li><a href="catalogo.html">CATÁLOGO</a></li>
+                    <li><a href="catalogo.html">CATÁLOGO</a></li>
                     <li><a href="#contacto">CONTACTO</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- TEXTO DE BIENVENIDA -->
     <section class="welcome">
         <div class="container inner">
             <h1>Bienvenido a la tienda de gorras</h1>
@@ -535,12 +536,10 @@
         </div>
     </section>
 
-    <!-- HERO / CARRUSEL -->
     <section class="hero">
         <div class="container">
             <div class="carousel" id="carousel" aria-roledescription="carrusel" aria-label="Promociones">
                 <div class="track" id="track">
-                    <!-- Diapositivas de ejemplo: cambia las imágenes por las tuyas -->
                     <div class="slide">
                         <img src="images/latiendadelasgorras-33_33a04d48-3cfd-4f75-8f87-f26d16079489_3648x4864.webp"
                             alt="Gorra negra sobre fondo claro" />
@@ -550,7 +549,6 @@
                     <div class="slide">
                         <video autoplay muted loop playsinline>
                             <source src="images/videoplayback.mp4" type="video/mp4" />
-                            
                         </video>
                         <div class="overlay"></div>
                         <div class="caption">Nuestra colección en acción </div>
@@ -572,69 +570,87 @@
         </div>
     </section>
 
-    <!-- NOVEDADES + VIDEO -->
     <main class="container">
         <div class="section-title" id="novedades">
             <span class="pill"></span>
             <h2 style="margin:0;">Novedades</h2>
         </div>
 
-        <div class="grid" id="gridNovedades">
-            <!-- Tarjetas de ejemplo (sustituye por tus datos) -->
-            <article class="card">
-<a href="gorras/gorra1.html"><img src="/pagina-web/images/latiendadelasgorras-33_33a04d48-3cfd-4f75-8f87-f26d16079489_3648x4864.webp" alt="Gorra blanca"></a>
-                    
-                <div class="info">
-                    <strong>59Fifty New York Black</strong>
-                    <span class="small">Ajustable · Algodón</span>
-                    <span class="price">19,99 €</span>
-                    <button class="buy" data-id="1">Añadir al carrito</button>
-                </div>
-            </article>
-            <article class="card">
-                <a href="gorras/gorra3.html"><img src="images/gorra-87_08f01e5a-8f37-432b-9543-829ed4898dc8_3648x4864.webp" alt="Gorra gris" /> </a>
-                <div class="info">
-                    <strong>59FIFTY Los Angeles RED</strong>
-                    <span class="small">Unisex · Casual</span>
-                    <span class="price">49,99 €</span>
-                    <button class="buy" data-id="2">Añadir al carrito</button>
-                </div>
-            </article>
-            <article class="card">
-                <a href="gorras/gorra2.html"><img src="images/pri-1_3555x4740.webp" alt="Gorra roja" /></a>
-                <div class="info">
-                    <strong>OFFSIDE Chain Oakland Green</strong>
-                    <span class="small">Street · Talla única</span>
-                    <span class="price">17,50 €</span>
-                    <button class="buy" data-id="3">Añadir al carrito</button>
-                </div>
-            </article>
-            <article class="card">
-                <a href="gorras/gorra4.html"><img src="/pagina-web/images/latiendadelasgorrasabril-1_f5fa8ec7-bcd0-4590-a2a5-916c51e93863_3648x4864.webp "alt="Gorra roja" /></a>
-              
-                <div class="info">
-                    <strong>Goffer Denim Yankees</strong>
-                    <span class="small">Ligera · Verano</span>
-                    <span class="price">16,90 €</span>
-                    <button class="buy" data-id="4">Añadir al carrito</button>
-                </div>
-            </article>
+      <div class="grid" id="gridNovedades">
+    <article class="card">
+        <a href="gorras/gorra1.html">
+            <img src="images/latiendadelasgorras-33_33a04d48-3cfd-4f75-8f87-f26d16079489_3648x4864.webp" alt="Gorra blanca">
+        </a>
+        <div class="info">
+            <strong>59Fifty New York Black</strong>
+            <span class="small">Ajustable · Algodón</span>
+            <span class="price">19,99 €</span>
+            <button class="buy" data-id="1">Añadir al carrito</button>
         </div>
-
-        <div class="section-title" id="video" style="margin-top:28px;">
+    </article>
+    
+    <article class="card">
+        <a href="gorras/gorra3.html">
+            <img src="images/gorra-87_08f01e5a-8f37-432b-9543-829ed4898dc8_3648x4864.webp" alt="Gorra gris" />
+        </a>
+        <div class="info">
+            <strong>59FIFTY Los Angeles RED</strong>
+            <span class="small">Unisex · Casual</span>
+            <span class="price">49,99 €</span>
+            <button class="buy" data-id="2">Añadir al carrito</button>
+        </div>
+    </article>
+    
+    <article class="card">
+        <a href="gorras/gorra2.html">
+            <img src="images/pri-1_3555x4740.webp" alt="Gorra roja" />
+        </a>
+        <div class="info">
+            <strong>OFFSIDE Chain Oakland Green</strong>
+            <span class="small">Street · Talla única</span>
+            <span class="price">17,50 €</span>
+            <button class="buy" data-id="3">Añadir al carrito</button>
+        </div>
+    </article>
+    
+    <article class="card">
+        <a href="gorras/gorra4.html">
+            <img src="images/latiendadelasgorrasabril-1_f5fa8ec7-bcd0-4590-a2a5-916c51e93863_3648x4864.webp" alt="Gorra roja" />
+        </a>
+        <div class="info">
+            <strong>Goffer Denim Yankees</strong>
+            <span class="small">Ligera · Verano</span>
+            <span class="price">16,90 €</span>
+            <button class="buy" data-id="4">Añadir al carrito</button>
+        </div>
+    </article>
+</div>
+        <div class="section-title" id="multimedia" style="margin-top:28px;">
             <span class="pill"></span>
-            <h2 style="margin:0;">Vídeo</h2>
+            <h2 style="margin:0;">Multimedia (Video y Audio)</h2>
         </div>
 
         <div class="split">
             <div class="panel">
                 <h3 style="margin:4px 0 10px;">Presentación New Era</h3>
-                <video controls src="images/videoplayback (1).mp4" poster="https://www.youtube.com/watch?v=xUijOJg900U">
-
-                </video>
+                <video controls src="images/videoplayback (1).mp4"
+                    poster="https://www.youtube.com/watch?v=xUijOJg900U">
+                    </video>
             </div>
+            
             <div class="panel">
-                <h3 style="margin:4px 0 10px;">¿Qué traemos de nuevo?</h3>
+                <h3 style="margin:4px 0 10px;">Control de Música Ambiental</h3>
+                <p class="small">Usa estos controles para la música de fondo (música ambiental de la web).</p>
+                
+                <div class="background-audio-controls">
+                    <audio loop controls>
+                        <source src="audio/cancion.mp3" type="audio/mpeg" />
+                        <source src="audio/cancion.mp3" type="audio/ogg" />
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+
+                <h3 style="margin:16px 0 10px;">¿Qué traemos de nuevo?</h3>
                 <p class="small">Colecciones inspiradas en deporte y cultura urbana. Materiales de calidad, envíos
                     24/48h y devoluciones sencillas.</p>
                 <ul>
@@ -646,7 +662,6 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
     <footer id="contacto">
         <div class="container footer-grid">
             <div>
@@ -658,7 +673,7 @@
                 <ul style="list-style:none; padding:0; margin:8px 0 0; display:grid; gap:6px;">
                     <li><a href="#" style="color:inherit">Inicio</a></li>
                     <li><a href="#novedades" style="color:inherit">Novedades</a></li>
-                    <li><a href="#video" style="color:inherit">Vídeo</a></li>
+                    <li><a href="#multimedia" style="color:inherit">Multimedia</a></li>
                     <li><a href="#" style="color:inherit">Política de privacidad</a></li>
                 </ul>
             </div>
@@ -730,7 +745,6 @@
             msg.textContent = '¡Gracias! Te hemos suscrito.';
             form.reset();
         });
-
         // ======= Año dinámico en footer
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
