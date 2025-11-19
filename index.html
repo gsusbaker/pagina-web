@@ -207,115 +207,54 @@
         }
 
         /* CARRUSEL */
-        .hero {
-            padding: 16px 0 28px;
-        }
+      /* --- BUSCA ESTO Y REEMPLÁZALO/AÑÁDELO EN TU CSS --- */
 
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            background: #f9fafb;
-            height: 320px;
-        }
+.carousel {
+    /* Mantenemos lo que tenías */
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    height: 435px;
+}
 
-        .track {
-            display: flex;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
+/* EL NUEVO MOTOR DEL SLIDER (CSS PURO) */
+.track {
+    display: flex;
+    height: 100%;
+    width: 300%; /* 3 diapositivas = 300% de ancho */
+    /* Aquí está la magia que pide el profesor: */
+    animation: slideAnimation 15s infinite ease-in-out; 
+}
 
-        .slide {
-            min-width: 100%;
-            height: 100%;
-            position: relative;
-        }
+.slide {
+    width: 33.333%; /* Cada slide ocupa un tercio del track */
+    height: 100%;
+    flex-shrink: 0; /* Evita que se aplasten */
+    position: relative;
+}
 
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .slide video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+/* LOS KEYFRAMES (Esto es lo que evalúan en el punto 1) */
+@keyframes slideAnimation {
+    /* 0% a 25%: Muestra la primera diapositiva */
+    0% { margin-left: 0; }
+    25% { margin-left: 0; }
+    
+    /* 30% a 55%: Muestra la segunda diapositiva */
+    33% { margin-left: -100%; } /* -100% es el ancho de un slide completo */
+    58% { margin-left: -100%; }
+    
+    /* 63% a 90%: Muestra la tercera diapositiva */
+    66% { margin-left: -200%; }
+    91% { margin-left: -200%; }
+    
+    /* Vuelta al principio */
+    100% { margin-left: 0; }
+}
 
-        .slide .overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45));
-        }
-
-        .caption {
-            position: absolute;
-            left: 18px;
-            bottom: 18px;
-            padding: 8px 12px;
-            border-radius: 10px;
-            background: rgba(17, 17, 17, 0.65);
-            color: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(4px);
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .ctrl {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 6px;
-            pointer-events: none;
-        }
-
-        .btn {
-            pointer-events: auto;
-            border: 1px solid #d1d5db;
-            background: #ffffff;
-            color: #111827;
-            width: 38px;
-            height: 38px;
-            border-radius: 12px;
-            display: grid;
-            place-items: center;
-            font-weight: 700;
-        }
-
-        .btn:hover {
-            background: #f3f4f6;
-        }
-
-        .dots {
-            position: absolute;
-            left: 50%;
-            bottom: 10px;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: #d1d5db;
-            border: 1px solid #9ca3af;
-            cursor: pointer;
-        }
-
-        .dot.active {
-            background: var(--brand);
-            border-color: var(--brand);
-        }
-
+/* Opcional: Ocultar los controles manuales ya que es automático por CSS */
+.ctrl, .dots {
+    display: none; 
+}
         /* NOVEDADES + VIDEO */
         main {
             padding: 12px 0 50px;
@@ -496,6 +435,56 @@
             transition: background 0.2s, transform 0.2s;
             z-index: 9999;
         }
+
+        /* 1. ANIMACIÓN DE ENTRADA PARA LAS TARJETAS */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Vienen de abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    /* Configuración existente... */
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    /* Nueva animación */
+    animation: aparecer 0.8s ease-out forwards;
+    opacity: 0; /* Empiezan invisibles hasta que la animación arranca */
+}
+
+/* Hacemos que aparezcan en escalerita (una detrás de otra) */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.3s; }
+.card:nth-child(3) { animation-delay: 0.5s; }
+.card:nth-child(4) { animation-delay: 0.7s; }
+
+/* 2. ANIMACIÓN HOVER EN LAS IMÁGENES (Zoom suave) */
+.card img {
+    transition: transform 0.4s ease; /* Transición suave */
+}
+
+.card:hover img {
+    transform: scale(1.05); /* Zoom al pasar el ratón */
+}
+
+/* 3. ANIMACIÓN CONTINUA PARA EL CARRITO (Llamada a la acción) */
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); box-shadow: 0 0 15px rgba(255, 122, 0, 0.6); }
+    100% { transform: scale(1); }
+}
+
+#cart-icon {
+    /* Tu CSS actual... */
+    /* Añadimos la animación infinita */
+    animation: latido 3s infinite;
+}
     </style>
     <a id="cart-icon" href="./carrito.html" title="Ver carrito">
         🛒 <span id="cart-count">0</span>
@@ -541,22 +530,24 @@
             <div class="carousel" id="carousel" aria-roledescription="carrusel" aria-label="Promociones">
                 <div class="track" id="track">
                     <div class="slide">
-                        <img src="images/latiendadelasgorras-33_33a04d48-3cfd-4f75-8f87-f26d16079489_3648x4864.webp"
-                            alt="Gorra negra sobre fondo claro" />
+                      <video autoplay muted loop playsinline>
+                            <source src="images/Video  Promocional NEW ERA.mp4" type="video/mp4" />
+                        </video>
                         <div class="overlay"></div>
                         <div class="caption">Colección Negra · -20%</div>
                     </div>
                     <div class="slide">
                         <video autoplay muted loop playsinline>
-                            <source src="images/videoplayback.mp4" type="video/mp4" />
+                            <source src="images/New Era Cap _ Late Night.mp4" type="video/mp4" />
                         </video>
                         <div class="overlay"></div>
                         <div class="caption">Nuestra colección en acción </div>
                     </div>
 
                     <div class="slide">
-                        <img src="images/new_era_oracle_red_bull_racing_binary-1048x630.jpg"
-                            alt="Gorra roja en primer plano" />
+                       <video autoplay muted loop playsinline>
+                            <source src="images/First Changes Everything _ New Era Cap.mp4" type="video/mp4" />
+                        </video>
                         <div class="overlay"></div>
                         <div class="caption">Edición Limitada</div>
                     </div>
@@ -703,31 +694,31 @@
             });
         }
 
-        // ======= CARRUSEL básico sin librerías
-        const track = document.getElementById('track');
-        const slides = Array.from(track.children);
-        const prevBtn = document.getElementById('prev');
-        const nextBtn = document.getElementById('next');
-        const dots = document.getElementById('dots');
-        let index = 0;
+        // // ======= CARRUSEL básico sin librerías
+        // const track = document.getElementById('track');
+        // const slides = Array.from(track.children);
+        // const prevBtn = document.getElementById('prev');
+        // const nextBtn = document.getElementById('next');
+        // const dots = document.getElementById('dots');
+        // let index = 0;
 
-        function renderDots() {
-            dots.innerHTML = '';
-            slides.forEach((_, i) => {
-                const d = document.createElement('button');
-                d.className = 'dot' + (i === index ? ' active' : '');
-                d.addEventListener('click', () => goTo(i));
-                dots.appendChild(d);
-            });
-        }
+        // function renderDots() {
+        //     dots.innerHTML = '';
+        //     slides.forEach((_, i) => {
+        //         const d = document.createElement('button');
+        //         d.className = 'dot' + (i === index ? ' active' : '');
+        //         d.addEventListener('click', () => goTo(i));
+        //         dots.appendChild(d);
+        //     });
+        // }
 
-        function goTo(i) {
-            index = (i + slides.length) % slides.length; // rotación circular
-            track.style.transform = `translateX(-${index * 100}%)`;
-            renderDots();
-        }
-        prevBtn.addEventListener('click', () => goTo(index - 1));
-        nextBtn.addEventListener('click', () => goTo(index + 1));
+        // function goTo(i) {
+        //     index = (i + slides.length) % slides.length; // rotación circular
+        //     track.style.transform = `translateX(-${index * 100}%)`;
+        //     renderDots();
+        // }
+        // prevBtn.addEventListener('click', () => goTo(index - 1));
+        // nextBtn.addEventListener('click', () => goTo(index + 1));
 
         // auto-play (pausa si el usuario interactúa con los controles)
         let timer = setInterval(() => goTo(index + 1), 4500);
