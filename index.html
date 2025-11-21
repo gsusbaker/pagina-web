@@ -597,7 +597,7 @@
             <img src="images/pri-1_3555x4740.webp" alt="Gorra roja" />
         </a>
         <div class="info">
-            <strong>OFFSIDE Chain Oakland Green</strong>
+            <strong>OFFSIDE Chain Oakland</strong>
             <span class="small">Street · Talla única</span>
             <span class="price">17,50 €</span>
             <button class="buy" data-id="3">Añadir al carrito</button>
@@ -683,7 +683,7 @@
         </div>
     </footer>
 
-    <script>
+   <script>
         // ======= NAV móvil
         const menuBtn = document.getElementById('menuBtn');
         const menu = document.getElementById('menu');
@@ -694,37 +694,104 @@
             });
         }
 
-        // // ======= CARRUSEL básico sin librerías
-        // const track = document.getElementById('track');
-        // const slides = Array.from(track.children);
-        // const prevBtn = document.getElementById('prev');
-        // const nextBtn = document.getElementById('next');
-        // const dots = document.getElementById('dots');
-        // let index = 0;
+        // ======= CARRUSEL básico sin librerías
+        // Se mantiene el carrusel de CSS puro, por lo que este JS no es necesario
+        // let timer = setInterval(() => goTo(index + 1), 4500);
+        // [prevBtn, nextBtn, track].forEach(el => el.addEventListener('pointerdown', () => { clearInterval(timer); }));
+        // renderDots();
 
-        // function renderDots() {
-        //     dots.innerHTML = '';
-        //     slides.forEach((_, i) => {
-        //         const d = document.createElement('button');
-        //         d.className = 'dot' + (i === index ? ' active' : '');
-        //         d.addEventListener('click', () => goTo(i));
-        //         dots.appendChild(d);
-        //     });
-        // }
 
-        // function goTo(i) {
-        //     index = (i + slides.length) % slides.length; // rotación circular
-        //     track.style.transform = `translateX(-${index * 100}%)`;
-        //     renderDots();
-        // }
-        // prevBtn.addEventListener('click', () => goTo(index - 1));
-        // nextBtn.addEventListener('click', () => goTo(index + 1));
+        // **********************************************
+        // 🛒 LÓGICA DEL CARRITO (NUEVO CÓDIGO)
+        // **********************************************
 
-        // auto-play (pausa si el usuario interactúa con los controles)
-        let timer = setInterval(() => goTo(index + 1), 4500);
-        [prevBtn, nextBtn, track].forEach(el => el.addEventListener('pointerdown', () => { clearInterval(timer); }));
+        const CART_KEY = 'tiendaGorrasCart'; // Clave para localStorage
+        const cartCountElement = document.getElementById('cart-count');
+        const buyButtons = document.querySelectorAll('.buy');
 
-        renderDots();
+        /** Recupera el carrito desde localStorage o devuelve un array vacío. */
+        function getCart() {
+            try {
+                const cartData = localStorage.getItem(CART_KEY);
+                return cartData ? JSON.parse(cartData) : [];
+            } catch (error) {
+                console.error("Error al leer el carrito de localStorage:", error);
+                return [];
+            }
+        }
+
+        /** Guarda el carrito en localStorage. */
+        function saveCart(cart) {
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        }
+
+        /** Actualiza el contador visible del carrito. */
+        function updateCartCount() {
+            const cart = getCart();
+            // Calcula la suma total de las cantidades de todos los productos en el carrito
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+        }
+
+        /** Manejador del evento clic para añadir un producto al carrito. */
+        function addToCart(event) {
+            // Obtiene el ID del producto desde el atributo data-id del botón
+            const productId = event.target.dataset.id;
+            
+            // Si el producto no tiene ID, salimos
+            if (!productId) {
+                console.error("Botón sin atributo data-id.");
+                return;
+            }
+
+            // Opcional: Obtener el nombre y precio para mostrar en la consola/futura página de carrito
+            const cardElement = event.target.closest('.card');
+            const productName = cardElement ? cardElement.querySelector('strong').textContent : 'Producto Desconocido';
+            const productPriceText = cardElement ? cardElement.querySelector('.price').textContent.replace(' €', '').replace(',', '.') : '0';
+            const productPrice = parseFloat(productPriceText);
+
+            let cart = getCart();
+            
+            // Busca si el producto ya está en el carrito
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                // Si existe, solo incrementa la cantidad
+                existingItem.quantity += 1;
+            } else {
+                // Si no existe, añade el nuevo producto
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    quantity: 1
+                });
+            }
+
+            // Guarda la nueva versión del carrito y actualiza el contador
+            saveCart(cart);
+            updateCartCount();
+            
+            // Animación visual de confirmación (Opcional, pero genial para UX)
+            event.target.textContent = '✅ Añadido!';
+            setTimeout(() => {
+                event.target.textContent = 'Añadir al carrito';
+            }, 1000);
+
+            console.log(`Añadido al carrito: ${productName} (ID: ${productId}). Cantidad actual: ${existingItem ? existingItem.quantity : 1}`);
+        }
+
+        // 5. Asignar el evento 'click' a todos los botones de "Añadir al carrito"
+        buyButtons.forEach(button => {
+            button.addEventListener('click', addToCart);
+        });
+
+        // 6. Inicializar el contador al cargar la página
+        updateCartCount();
+
+        // **********************************************
+        // 🧪 FIN LÓGICA DEL CARRITO
+        // **********************************************
 
         // ======= Newsletter (demo simple)
         const form = document.getElementById('formNewsletter');
@@ -736,6 +803,7 @@
             msg.textContent = '¡Gracias! Te hemos suscrito.';
             form.reset();
         });
+        
         // ======= Año dinámico en footer
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
