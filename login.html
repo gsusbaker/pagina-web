@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Gorras — Iniciar Sesión</title>
+    
+    <link rel="stylesheet" href="scss/main.css"> 
+    <style>.underline-black {
+    border-bottom: 3px solid #a86e02; /* <-- Color gris oscuro directamente */
+    display: inline-block;
+    padding-bottom: 3px;
+}</style>
+</head>
+<body>
+<div class="card registro-card bg-dark text-white border-0">
+        
+        <div class="card-header bg-black text-white text-center py-3 border-bottom border-secondary"
+            style="border-top-left-radius: 14px; border-top-right-radius: 14px;">
+            
+        
+            <h2 class="h3 mb-0 underline-black" style="font-weight: 700;">Iniciar Sesion</h2>
+        </div>
+        
+        <div class="card-body p-5">
+            <form id="registroForm" action="#" method="POST" class="needs-validation" novalidate>
+            
+            ```
+
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6"> 
+                
+                <div class="card shadow-lg border-0" style="border-radius: 14px;">
+                    <div class="card-header bg-dark text-white text-center py-3" style="border-top-left-radius: 14px; border-top-right-radius: 14px;">
+
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="loginForm" action="#" method="POST" class="needs-validation" novalidate>
+                            
+                            <div class="mb-3">
+                                <label for="inputEmail" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="tu@email.com" required>
+                                <div class="invalid-feedback">
+                                    Introduce un correo electrónico válido.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="inputPassword" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="inputPassword" required>
+                                <div class="invalid-feedback">
+                                    Introduce tu contraseña.
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-dark w-100">Acceder</button>
+
+                            <hr class="my-4">
+
+                            <div class="text-center">
+                                <p class="mb-0">¿No tienes cuenta? <a href="registro.html" class="text-decoration-none">Regístrate aquí</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script>
+        // COPIA AQUÍ LA FUNCIÓN showModal() DE registro.html
+        function showModal(title, message) {
+            document.getElementById('confirmationModalLabel').textContent = title;
+            document.getElementById('modalMessage').textContent = message;
+            
+            const myModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+            myModal.show();
+        }
+
+        // Script de Validación de Formulario y Activación del Modal
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        // Si el formulario es válido, evitamos el envío real y mostramos el modal
+                        event.preventDefault(); 
+                        showModal('¡Inicio Exitoso!', 'Has iniciado sesión correctamente.');
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+</body>
+
+</html>

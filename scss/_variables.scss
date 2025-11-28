@@ -1,0 +1,61 @@
+// ===================================
+// VARIABLES SASS (Colores y Valores Globales)
+// Basado en tus variables CSS :root
+// ===================================
+
+// --- 1. Definición de tu color de Marca ---
+$brand-orange: #ff7a00;
+$brand-black: #2e2e2e;
+$brand-muted: #6b7280;
+$max-width: 1100px;
+$border-radius: 14px;
+
+// --- 2. Sobreescritura de Variables de Bootstrap ---
+// 🔥 CRUCIAL: Modificamos el mapa $theme-colors
+$theme-colors: (
+    "primary": $brand-orange, // Esto hace que .btn-primary sea naranja
+    "secondary": $brand-black,
+    "info": $brand-muted
+);
+
+// Opcional: Modificaciones estructurales
+$enable-responsive-font-sizes: true;
+$enable-shadows: true;
+$border-radius: $border-radius;
+
+// --- Colores Principales (Brand) ---
+$color-brand: #ff7a00;           // Naranja Principal (var(--brand))
+$color-black: #2e2e2e;           // Negro (var(--black) para header)
+
+// --- Colores de Texto y Fondo ---
+$color-bg: #ffffff;              // Fondo de página (var(--bg))
+$color-text: #0b1220;            // Texto general oscuro (var(--text))
+$color-muted: #6b7280;           // Gris medio para texto secundario (var(--muted))
+$color-border: #e5e7eb;          // Borde suave para tarjetas (var(--border))
+$color-white: #ffffff;           // Blanco explícito
+$color-light-gray: #f9fafb;      // Gris muy claro (para hover de botones y fondo panel)
+$color-medium-gray: #d1d5db;     // Gris para borde de botón, texto barcode
+$color-search-bg: #f3f4f6;       // Fondo de la caja de búsqueda
+$color-nav-border: #374151;      // Borde del menú móvil
+
+// --- Tipografía y Spacing ---
+// En SASS, es más limpio usar nombres de variables para tamaños comunes
+$max-width: 1100px;              // Ancho máximo del contenido (var(--max))
+$border-radius: 14px;            // Radios suaves (var(--radius))
+$spacing-base: 16px;
+$spacing-small: 12px;
+$spacing-large: 20px;
+$font-family-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+
+// --- Media Queries ---
+// Definir los breakpoints de tu diseño actual
+$breakpoint-desktop-lg: 980px;
+$breakpoint-tablet: 760px;
+$breakpoint-mobile: 520px;
+
+// --- Mixin de Media Query (Opcional, pero recomendado) ---
+@mixin media-max($width) {
+    @media (max-width: $width) {
+        @content;
+    }
+}

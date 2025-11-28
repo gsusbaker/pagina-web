@@ -1,0 +1,35 @@
+// Estilos generales (Resets, Body, Container)
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: $font-family-base;
+    background: $color-bg;
+    color: $color-text;
+    line-height: 1.5;
+}
+
+.container {
+    width: min(100%, $max-width);
+    margin-inline: auto;
+    padding: 0 16px;
+}
+
+// Estilos de Utilidad
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}

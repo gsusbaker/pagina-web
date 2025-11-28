@@ -1,0 +1,165 @@
+// Estilos de estructura (Header, Footer, Navegación)
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: $color-black;
+    color: $color-white;
+    border-bottom: 1px solid $color-white;
+}
+
+.topbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: $spacing-small;
+    padding: 10px 0 6px;
+}
+
+.barcode-wrap {
+    display: grid;
+    gap: 6px;
+
+    .barcode {
+        height: 20px;
+        background: repeating-linear-gradient(90deg, $color-white 0 2px, transparent 2px 4px);
+        opacity: .85;
+        border-radius: 3px;
+    }
+
+    .barcode-text {
+        color: $color-medium-gray;
+        font-size: 12px;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.right-side {
+    display: flex;
+    align-items: center;
+    gap: $spacing-small;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: $color-search-bg;
+    border-radius: 6px;
+    padding: 4px 8px;
+
+    input {
+        border: none;
+        outline: none;
+        background: transparent;
+        color: #111;
+        width: 180px;
+    }
+}
+
+.naranja {
+    width: 80px;
+    object-fit: contain;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 10px 0 $spacing-base;
+}
+
+nav {
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+    }
+    
+    a {
+        text-decoration: none;
+        color: $color-white;
+        font-weight: 700;
+        letter-spacing: .5px;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+            outline: none;
+        }
+    }
+}
+
+.menu-btn {
+    display: none;
+    border: 1px solid $color-nav-border;
+    background: transparent;
+    color: $color-white;
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+// MEDIA QUERIES
+@include media-max($breakpoint-tablet) { // 760px
+    .nav {
+        justify-content: space-between;
+    }
+
+    nav {
+        ul {
+            display: none;
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            top: 116px;
+            flex-direction: column;
+            background: #111;
+            border: 1px solid $color-nav-border;
+            border-radius: 12px;
+            padding: 10px;
+
+            &.open {
+                display: flex;
+            }
+        }
+    }
+
+    .menu-btn {
+        display: inline-flex;
+    }
+}
+
+// --- FOOTER ---
+footer {
+    border-top: 1px solid $color-border;
+    background: #fafafa;
+    color: $color-text;
+    padding: $spacing-large 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: $spacing-base;
+}
+
+@include media-max($breakpoint-tablet) { // 760px
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 0.9rem;
+    color: $color-muted;
+}

@@ -1,0 +1,12 @@
+// scss/main.scss
+
+// 1. TUS VARIABLES
+@import "variables"; 
+
+// 2. PERSONALIZACIÓN DE BOOTSTRAP (IMPORTA EL CORE DE BOOTSTRAP AQUÍ)
+@import "custom-bootstrap"; 
+// 3. TUS ESTILOS PERSONALIZADOS (para que sobrescriban si es necesario)
+@import "base";
+@import "layout"; 
+@import "components";
+@import "header";

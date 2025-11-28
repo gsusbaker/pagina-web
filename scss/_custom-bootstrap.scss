@@ -1,0 +1,26 @@
+
+@import 'variables';
+
+
+// Colores del Tema
+$primary: $color-brand;       // Tu naranja principal para botones y acentos
+$secondary: $color-muted;     // Usamos el gris medio para el color secundario
+$dark: $color-black;          // Usamos el negro para el color $dark (botón .btn-dark, navbars oscuras)
+$light: $color-light-gray;    // Tu gris claro
+
+// Variables de Fondo y Tipografía
+$body-bg: $color-bg;
+$body-color: $color-text;
+$font-family-base: $font-family-base;
+
+// Variables de Componentes (Radios de Esquina y Bordes)
+$border-color: $color-border;
+$border-radius: $border-radius; // Utiliza tu radio de 14px
+
+// Variables para los Inputs (para que tus inputs oscuros se vean bien)
+$input-bg: $color-black; 
+$input-color: $color-light-gray;
+$input-border-color: $color-border-dark; // Si definiste un borde oscuro para los inputs
+
+
+@import "~bootstrap/scss/bootstrap"; // Usar '~' o 'node_modules/' es más estándar.
