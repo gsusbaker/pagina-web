@@ -176,26 +176,35 @@
    <link rel="stylesheet" href="/scss/main.css">
 </head>
 <body>
-  <header><div class="container d-flex justify-content-between align-items-center flex-wrap py-3">
-            <a href="./index.html" title="Volver al inicio">
-                <img src="images/favicon.ico" alt="Logo Tienda de Gorras" style="height: 40px; width: auto;" />
-            </a>
-            <h1>Nuestro Catalogo</h1>
-
-            <div class="auth-buttons">
-                <a href="login.html" class="btn-login">Iniciar Sesión</a>
-                <a href="registro.html" class="btn-register">Registrarse</a>
+       <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Inicio</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="catalogo.html">Catálogo</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="detalle_producto.html">NUEVO Producto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="carrito.html">Carrito</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Acceder</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            
-        </div>
-   
-  </header>
+        </nav>
+        </header>
 
   <!-- 🛒 Icono fijo del carrito -->
    
-  <a id="cart-icon" href="/carrito.html" title="Ver carrito">
-    🛒 <span id="cart-count">0</span>
-  </a>
 
   <main>
     <div class="grid">

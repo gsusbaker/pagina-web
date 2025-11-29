@@ -372,6 +372,45 @@ pre code {
   color: inherit;
   word-break: normal;
 }
+/* 1. Estilo para las filas de dos columnas */
+.form-row {
+    display: flex; /* 🔥 Usa Flexbox para colocar los elementos en fila */
+    gap: 20px; /* Espacio horizontal entre los campos */
+    margin-bottom: 15px; /* Reduce el espacio vertical entre filas */
+    width: 100%;
+}
+
+/* 2. Estilo para cada campo individual dentro de la fila */
+.form-group {
+    flex: 1; /* Hace que cada grupo ocupe el mismo espacio horizontalmente */
+    display: flex;
+    flex-direction: column; /* Asegura que label e input sigan apilados */
+}
+
+/* 3. Ajuste de Espaciado Vertical */
+/* Reduce el margen debajo de los títulos de las secciones */
+h2 {
+    margin-bottom: 10px; /* Reduce el espacio debajo de "Dirección de Envío" */
+}
+
+/* Ajuste de los inputs para que no crezcan demasiado */
+input[type="text"], input[type="email"], input[type="number"] {
+    padding: 10px;
+    margin-top: 5px; /* Reduce el espacio entre el label y el input */
+}
+
+/* 4. Contenedor Principal (Para evitar que el campo de pago esté a la derecha del todo) */
+.metodo-pago-container {
+    width: 50%; /* O el ancho que necesites */
+}
+
+/* Para el diseño móvil, las columnas se apilan de nuevo */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column; /* Vuelve a apilar las columnas en móvil */
+        gap: 0;
+    }
+}
 
 code {
   font-size: 0.875em;

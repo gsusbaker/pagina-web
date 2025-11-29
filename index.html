@@ -10,48 +10,39 @@
     </style>
     <a id="cart-icon" href="./carrito.html" title="Ver carrito">
         <link rel="stylesheet" href="scss/main.css">
-        🛒 <span id="cart-count">0</span>
+
     </a>
 </head>
 
 <body>
    
            
-    <header>
-        <br>
-         <div class="auth-buttons">
-                <a href="login.html" class="btn-login">Iniciar Sesión</a>
-                <a href="registro.html" class="btn-register">Registrarse</a>
-            </div>
-            
-     
-        <div class="container topbar">
-            <div class="barcode-wrap">
-                <div class="barcode" aria-hidden="true"></div>
-                <div class="barcode-text">Encuentra tu GORRA para cada ESTILO</div>
-            </div>
-            <div class="right-side">
-                <div class="search" role="search">
-                    <span aria-hidden="true">🔍</span>
-                    <input type="search" placeholder="Buscar..." aria-label="Buscar" />
+       <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Inicio</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="catalogo.html">Catálogo</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="detalle_producto.html">NUEVO Producto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="carrito.html">Carrito</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Acceder</a>
+                        </li>
+                    </ul>
                 </div>
-                <img class="naranja" src="./images/favicon.ico" alt="Mascota naranja (pon tu imagen)" width="300px" />
             </div>
-        </div>
-        <div class="container nav">
-            <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">☰ Menú</button>
-            
-            <nav aria-label="Principal">
-                <ul id="menu">
-                    <li><a href="#">INICIO</a></li>
-                    <li><a href="catalogo.html">CATÁLOGO</a></li>
-                    <li><a href="#contacto">CONTACTO</a></li>
-                    
-                </ul>
-            </nav>
-        </div>
-        
-    </header>
+        </nav>
+        </header>
     
 
     <section class="welcome">
